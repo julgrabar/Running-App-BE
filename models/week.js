@@ -10,9 +10,9 @@ const weekSchema = Schema({
     maxLength: 50,
   },
   order: { type: Number, min: 1, required: true },
-  workouts: [{ type: Schema.Types.ObjectId, ref: "Training" }],
+  workouts: [{ type: Schema.Types.ObjectId, ref: "training" }],
 });
 
-const Week = model("Week", weekSchema);
+const Week = model("week", weekSchema);
 
-module.exports = { Week };
+module.exports = Week;

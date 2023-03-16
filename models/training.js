@@ -9,12 +9,13 @@ const trainingSchema = Schema({
     minLength: 4,
     maxLength: 50,
   },
+  isPassed: { type: Boolean, default: false },
   image: { type: String, default: "" },
   duration: { type: Number, required: true },
   repetitions_number: { type: Number, min: 1, required: true },
   has_warm_up: { type: Boolean, default: true },
   has_cool_down: { type: Boolean, default: true },
-  week: { type: Schema.Types.ObjectId, ref: "Week" },
+  week: { type: Schema.Types.ObjectId, ref: "week" },
   exercises: [
     {
       id: { type: Number, required: true },
@@ -28,6 +29,6 @@ const trainingSchema = Schema({
   ],
 });
 
-const Training = model("Training", trainingSchema);
+const Training = model("training", trainingSchema);
 
-module.exports = { Training };
+module.exports = Training;

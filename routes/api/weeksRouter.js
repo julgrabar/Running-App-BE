@@ -1,11 +1,11 @@
 const express = require("express");
 const { getWeeks, getWeekById } = require("../../controllers");
-const { ctrlWrapper } = require("../../middleware");
+const { ctrlWrapper, auth } = require("../../middleware");
 
 const router = express.Router();
 
 router.get("/", ctrlWrapper(getWeeks));
 
-router.get("/:weekId", ctrlWrapper(getWeekById));
+router.get("/:weekId", auth, ctrlWrapper(getWeekById));
 
 module.exports = router;

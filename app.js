@@ -3,7 +3,12 @@ const logger = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const { weeksRouter, trainingsRouter } = require("./routes/api");
+const {
+  weeksRouter,
+  trainingsRouter,
+  authRouter,
+  usersRouter,
+} = require("./routes/api");
 
 mongoose.set("strictQuery", true);
 dotenv.config();
@@ -18,6 +23,8 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/auth", authRouter);
+app.use("/api/users", usersRouter);
 app.use("/api/weeks", weeksRouter);
 app.use("/api/trainings", trainingsRouter);
 
